@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Bất động sản Sổ Đỏ tuyển dụng Môi giới 🔴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#b4432d;
+    --clay-deep:#7c2a1c;
+    --ink:#1e241d;
+    --moss:#48563f;
+    --sand:#f3e9d6;
+    --paper:#fbf5e8;
+    --brass:#c08a3e;
+    --line:#d8c7a3;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Work Sans',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .mono{font-family:'Space Mono',monospace;}
+
+  /* seal / stamp signature element */
+  .seal{
+    width:54px;height:54px;border-radius:50%;
+    border:2.5px solid var(--clay);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;flex-shrink:0;
+    color:var(--clay);font-weight:700;
+  }
+  .seal::before{
+    content:"";position:absolute;inset:5px;border:1px dashed var(--clay);border-radius:50%;
+  }
+  .seal span{font-family:'Fraunces',serif;font-size:1.1rem;}
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav-wrap{
+    max-width:1240px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-text{font-weight:800;letter-spacing:.3px;font-size:1.02rem;line-height:1.1;}
+  .brand-text small{display:block;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:1.5px;color:var(--moss);font-weight:700;}
+  .cta-btn{
+    background:var(--clay);color:var(--paper);padding:11px 26px;border-radius:2px;
+    font-weight:700;letter-spacing:.5px;font-size:.85rem;
+    border:1.5px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    transition:.15s;
+  }
+  .cta-btn:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+
+  /* HERO — asymmetric split, dossier collage */
+  .hero{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:0;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .hero-copy{
+    padding:80px 60px 80px 40px;
+    display:flex;flex-direction:column;justify-content:center;
+    max-width:640px;margin-left:auto;
+  }
+  .hero-copy .file-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:2px;
+    color:var(--clay);border:1px solid var(--clay);padding:5px 12px;border-radius:20px;
+    width:fit-content;margin-bottom:22px;text-transform:uppercase;
+  }
+  .hero-copy .file-tag::before{content:"●";font-size:.6rem;}
+  .hero-copy h1{
+    font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.08;margin-bottom:22px;
+  }
+  .hero-copy h1 .accent{color:var(--clay);font-style:italic;font-weight:600;}
+  .hero-copy p{color:var(--ink);opacity:.75;font-size:1.05rem;max-width:520px;margin-bottom:32px;}
+  .hero-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:var(--paper);padding:16px 30px;
+    font-weight:700;font-size:.95rem;letter-spacing:.4px;border-radius:2px;
+    box-shadow:4px 4px 0 var(--clay);transition:.15s;
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--clay);}
+  .hero-phone{font-family:'Space Mono',monospace;font-size:.9rem;}
+  .hero-phone b{display:block;font-size:1.1rem;color:var(--clay);}
+
+  .hero-collage{
+    position:relative;background:var(--sand);
+    display:flex;align-items:center;justify-content:center;padding:50px;
+    overflow:hidden;
+  }
+  .collage-photo{
+    position:absolute;border:6px solid var(--paper);box-shadow:0 14px 34px rgba(0,0,0,.22);
+    transition:.25s;object-fit:cover;
+  }
+  .collage-photo:hover{transform:scale(1.03) rotate(0deg) !important;z-index:5;}
+  .placeholder-ph{
+    aspect-ratio:4/3;background:repeating-linear-gradient(45deg,var(--sand),var(--sand) 10px,#ece0c4 10px,#ece0c4 20px);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;
+    color:var(--ink);opacity:.55;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:1px;padding:16px;
+  }
+  .placeholder-ph small{font-size:.62rem;opacity:.8;margin-top:6px;font-family:'Work Sans',sans-serif;letter-spacing:0;}
+  .c1{width:56%;top:8%;left:6%;transform:rotate(-4deg);z-index:2;}
+  .c2{width:44%;bottom:6%;right:4%;transform:rotate(5deg);z-index:3;}
+  .c3{width:34%;top:36%;left:38%;transform:rotate(-2deg);z-index:4;}
+  .hero-stat-badge{
+    position:absolute;top:20px;right:20px;background:var(--clay);color:var(--paper);
+    border-radius:50%;width:104px;height:104px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;transform:rotate(8deg);
+    box-shadow:0 10px 20px rgba(0,0,0,.25);z-index:6;
+  }
+  .hero-stat-badge b{font-family:'Fraunces',serif;font-size:1.3rem;}
+  .hero-stat-badge span{font-size:.58rem;letter-spacing:1px;}
+
+  /* LEDGER STRIP — dark stats */
+  .ledger{
+    background:var(--ink);color:var(--paper);
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border-bottom:2px solid var(--ink);
+  }
+  .ledger-item{
+    padding:34px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.12);
+  }
+  .ledger-item:last-child{border-right:none;}
+  .ledger-item b{font-family:'Space Mono',monospace;font-size:1.7rem;color:var(--brass);display:block;}
+  .ledger-item span{font-size:.78rem;opacity:.7;letter-spacing:.4px;}
+
+  section{padding:80px 24px;max-width:1240px;margin:0 auto;}
+  .kicker{
+    font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:3px;color:var(--clay);
+    text-transform:uppercase;display:block;margin-bottom:12px;
+  }
+  .section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:14px;max-width:640px;}
+  .section-sub{color:var(--ink);opacity:.7;max-width:620px;margin-bottom:48px;}
+
+  /* ADVANTAGES — dossier tab cards */
+  .adv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink);}
+  .adv-card{
+    background:var(--paper);padding:32px 26px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
+    position:relative;transition:.2s;
+  }
+  .adv-card:hover{background:var(--sand);}
+  .adv-card .tab-no{
+    font-family:'Space Mono',monospace;font-size:.72rem;color:var(--clay);letter-spacing:1px;margin-bottom:18px;display:block;
+  }
+  .adv-card h3{font-size:1.08rem;margin-bottom:10px;font-weight:700;}
+  .adv-card p{color:var(--ink);opacity:.7;font-size:.92rem;}
+
+  /* PERKS — moss panel with brass ticks */
+  .perks-panel{
+    background:var(--moss);color:var(--paper);border-radius:4px;padding:56px 40px;
+  }
+  .perks-panel .kicker{color:var(--brass);}
+  .perks-panel .section-title, .perks-panel .section-sub{color:var(--paper);}
+  .perks-panel .section-sub{opacity:.8;}
+  .perk-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15);}
+  .perk-row{background:var(--moss);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;}
+  .perk-row .mark{color:var(--brass);font-family:'Fraunces',serif;font-size:1.3rem;line-height:1;}
+  .perk-row h4{font-size:.98rem;margin-bottom:5px;font-weight:700;}
+  .perk-row p{font-size:.86rem;opacity:.8;}
+
+  /* CAREER LADDER — real sequence, numbered */
+  .ladder{position:relative;padding-top:20px;}
+  .ladder-track{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;
+  }
+  .ladder-track::before{
+    content:"";position:absolute;top:27px;left:8%;right:8%;height:2px;
+    background:repeating-linear-gradient(90deg,var(--ink) 0 10px,transparent 10px 18px);
+    z-index:0;
+  }
+  .ladder-step{position:relative;z-index:1;text-align:center;padding:0 20px;}
+  .ladder-step .num{
+    width:54px;height:54px;border-radius:50%;background:var(--paper);border:2.5px solid var(--clay);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 20px;
+    font-family:'Space Mono',monospace;font-weight:700;color:var(--clay);
+  }
+  .ladder-card{
+    background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:24px 20px;text-align:left;
+  }
+  .ladder-card .tag{
+    font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:1px;color:var(--clay);text-transform:uppercase;
+  }
+  .ladder-card h3{font-size:1.05rem;margin:8px 0 8px;font-weight:700;}
+  .ladder-card p{font-size:.88rem;opacity:.72;}
+
+  /* TESTIMONIALS — seal avatars */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;}
+  .t-featured{
+    background:var(--moss);color:var(--paper);border-radius:4px;
+    padding:44px 48px;margin-bottom:40px;position:relative;
+    display:flex;align-items:center;gap:36px;
+  }
+  .t-featured::before{
+    content:"“";position:absolute;top:0;left:36px;font-family:'Fraunces',serif;font-size:6rem;
+    color:rgba(255,255,255,.15);line-height:1;
+  }
+  .t-featured .seal{width:76px;height:76px;border-color:var(--brass);color:var(--brass);flex-shrink:0;}
+  .t-featured .seal span{font-size:1.4rem;}
+  .seal-photo{overflow:hidden;padding:0;}
+  .seal-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+  .seal-photo::before{display:none;}
+  .t-featured blockquote{font-family:'Fraunces',serif;font-size:1.25rem;font-style:italic;line-height:1.5;margin-bottom:16px;}
+  .t-featured .t-person strong{font-family:'Work Sans',sans-serif;font-size:1rem;font-style:normal;}
+  .t-featured .t-person span{color:var(--brass);}
+  .t-featured-tag{
+    font-family:'Space Mono',monospace;font-size:.68rem;letter-spacing:2px;color:var(--brass);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  @media(max-width:700px){ .t-featured{flex-direction:column;align-items:flex-start;text-align:left;} }
+  .t-card{
+    background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:28px;position:relative;
+  }
+  .t-card::before{
+    content:"“";position:absolute;top:10px;right:20px;font-family:'Fraunces',serif;font-size:3rem;color:var(--line);
+  }
+  .t-card p{font-size:.92rem;opacity:.8;margin-bottom:22px;font-style:italic;}
+  .t-person{display:flex;align-items:center;gap:14px;}
+  .t-person .seal{width:44px;height:44px;}
+  .t-person .seal span{font-size:.82rem;}
+  .t-person strong{display:block;font-size:.94rem;}
+  .t-person span{color:var(--clay);font-size:.78rem;font-family:'Space Mono',monospace;}
+
+  /* LOCATIONS — ticket style */
+  .locations-wrap{
+    background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;padding:44px;
+  }
+  .loc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;margin-top:28px;border-top:1px dashed var(--line);border-left:1px dashed var(--line);}
+  .loc-item{
+    padding:18px 20px;border-right:1px dashed var(--line);border-bottom:1px dashed var(--line);font-size:.92rem;
+  }
+  .loc-item b{display:block;color:var(--clay);font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+
+  /* APPLY FORM */
+  .apply-panel{
+    background:var(--ink);color:var(--paper);border-radius:4px;padding:60px 40px;
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  }
+  .apply-copy .kicker{color:var(--brass);}
+  .apply-copy h2{font-size:1.9rem;font-weight:800;margin-bottom:14px;}
+  .apply-copy p{opacity:.75;margin-bottom:22px;}
+  .apply-copy .hotline-box{
+    display:inline-flex;flex-direction:column;border:1.5px solid var(--brass);padding:14px 22px;border-radius:2px;
+  }
+  .apply-copy .hotline-box span{font-size:.7rem;letter-spacing:1px;opacity:.7;}
+  .apply-copy .hotline-box b{font-family:'Space Mono',monospace;color:var(--brass);font-size:1.3rem;}
+  .quick-contact{display:flex;gap:14px;margin-top:20px;flex-wrap:wrap;}
+  .quick-btn{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:2px;
+    font-weight:700;font-size:.88rem;letter-spacing:.3px;border:1.5px solid var(--brass);
+    color:var(--paper);transition:.15s;
+  }
+  .quick-btn.call{background:var(--clay);border-color:var(--clay);}
+  .quick-btn.zalo{background:transparent;}
+  .quick-btn:hover{transform:translateY(-2px);filter:brightness(1.1);}
+  .form-wrap{background:var(--paper);color:var(--ink);border-radius:4px;padding:32px;}
+  .form-wrap label{display:block;font-weight:700;font-size:.82rem;margin-bottom:6px;margin-top:16px;text-transform:uppercase;letter-spacing:.5px;}
+  .form-wrap label:first-child{margin-top:0;}
+  .form-wrap input, .form-wrap select{
+    width:100%;padding:12px 14px;border:1.5px solid var(--ink);border-radius:2px;font-size:.95rem;background:var(--paper);font-family:'Work Sans',sans-serif;
+  }
+  .form-wrap button{
+    margin-top:24px;width:100%;background:var(--clay);color:var(--paper);border:1.5px solid var(--ink);padding:15px;
+    border-radius:2px;font-weight:700;font-size:.95rem;cursor:pointer;letter-spacing:.5px;
+    box-shadow:4px 4px 0 var(--ink);transition:.15s;
+  }
+  .form-wrap button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--paper);padding:50px 24px 24px;border-top:2px solid var(--brass);}
+  .footer-wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
+  footer h4{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--brass);margin-bottom:16px;}
+  footer p, footer li{font-size:.88rem;opacity:.75;margin-bottom:9px;list-style:none;}
+  footer a:hover{color:var(--brass);}
+  .footer-bottom{text-align:center;font-size:.78rem;opacity:.5;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-copy{margin:0;padding:50px 24px;max-width:none;}
+    .hero-collage{min-height:320px;}
+    .ledger{grid-template-columns:repeat(2,1fr);}
+    .ladder-track{grid-template-columns:1fr;}
+    .ladder-track::before{display:none;}
+    .ladder-step{margin-bottom:30px;}
+    .apply-panel{grid-template-columns:1fr;}
+    .footer-wrap{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <div class="seal"><span>SĐ</span></div>
+      <div class="brand-text">Bất Động Sản Sổ Đỏ</div>
+    </div>
+    <a href="#apply" class="cta-btn">ỨNG TUYỂN</a>
+  </div>
+</header>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-copy">
+    <span class="file-tag">Hồ sơ tuyển dụng · 2026</span>
+    <h1>Mở cánh cửa <span class="accent">nghề môi giới</span> nhà phố miền Nam</h1>
+    <p>Vận hành hệ thống hơn <strong>20.000 môi giới</strong> đang hoạt động cùng nguồn nhà xác thực lên đến <strong>100.000 căn</strong> — một trong những đơn vị dẫn đầu lĩnh vực môi giới bất động sản khu vực miền Nam.</p>
+    <div class="hero-actions">
+      <a href="#apply" class="btn-primary">ỨNG TUYỂN NGAY →</a>
+      <div class="hero-phone">Hỗ trợ nhanh<b>0938 121 937</b></div>
+    </div>
+  </div>
+  <div class="hero-collage">
+    <img class="collage-photo c1" src="images/doi-ngu.jpg" alt="Đội ngũ môi giới Sổ Đỏ">
+    <img class="collage-photo c2" src="images/dao-tao.jpg" alt="Đào tạo môi giới bất động sản">
+    <img class="collage-photo c3" src="images/hoat-dong.png" alt="Làm việc tại nhiều công ty">
+    <div class="hero-stat-badge"><b>100K+</b><span>CĂN NHÀ</span></div>
+  </div>
+</section>
+
+<div class="ledger">
+  <div class="ledger-item"><b class="mono">20.000+</b><span>MÔI GIỚI ĐANG HOẠT ĐỘNG</span></div>
+  <div class="ledger-item"><b class="mono">100.000</b><span>CĂN NHÀ ĐÃ XÁC THỰC</span></div>
+  <div class="ledger-item"><b class="mono">3%</b><span>HOA HỒNG TỪ MỖI GIAO DỊCH</span></div>
+  <div class="ledger-item"><b class="mono">42%</b><span>CHUYÊN VIÊN ĐƯỢC HƯỞNG</span></div>
+</div>
+
+<section id="advantages">
+  <span class="kicker">Vì sao chọn Sổ Đỏ</span>
+  <h2 class="section-title">Bốn ưu điểm định hình cách chúng tôi làm việc</h2>
+  <p class="section-sub">Không phải lời quảng cáo — đây là những cơ chế vận hành thực tế của hệ thống.</p>
+  <div class="adv-grid">
+    <div class="adv-card">
+      <span class="tab-no">HỒ SƠ · 01</span>
+      <h3>Nguồn nhà ~100.000 căn</h3>
+      <p>Gần 100.000 căn nhà phố, căn hộ, đất thổ cư đã được xác thực trên hệ thống.</p>
+    </div>
+    <div class="adv-card">
+      <span class="tab-no">HỒ SƠ · 02</span>
+      <h3>Hoa hồng môi giới 3%</h3>
+      <p>Hoa hồng từ 3%, tối thiểu 100 triệu/vụ. Chuyên viên nhận đến 42%.</p>
+    </div>
+    <div class="adv-card">
+      <span class="tab-no">HỒ SƠ · 03</span>
+      <h3>Một tài khoản, không giới hạn</h3>
+      <p>Chỉ cần một tài khoản trên app, tự do truy cập nguồn nhà và bán ở mọi khu vực.</p>
+    </div>
+    <div class="adv-card">
+      <span class="tab-no">HỒ SƠ · 04</span>
+      <h3>Cơ chế minh bạch</h3>
+      <p>Cơ hội thăng tiến rõ ràng, công bằng, không phân biệt học vấn hay xuất thân.</p>
+    </div>
+  </div>
+</section>
+
+<section id="perks">
+  <div class="perks-panel">
+    <span class="kicker">Đặc quyền đội ngũ</span>
+    <h2 class="section-title">Tại sao nên về với Sổ Đỏ</h2>
+    <p class="section-sub">Những điều kiện làm việc thực tế dành cho môi giới trong hệ thống.</p>
+    <div class="perk-list">
+      <div class="perk-row"><span class="mark">§</span><div><h4>Hoa hồng minh bạch</h4><p>Chia ngay sau khi chốt, minh bạch theo từng vị trí. Vụ nhỏ nhất tối thiểu 100 triệu, môi giới hưởng một nửa.</p></div></div>
+      <div class="perk-row"><span class="mark">§</span><div><h4>Đào tạo A-Z</h4><p>Cầm tay chỉ việc từ lúc học việc đến từng vụ chốt, luôn có đội ngũ đồng hành.</p></div></div>
+      <div class="perk-row"><span class="mark">§</span><div><h4>1 tài khoản, không giới hạn</h4><p>Chủ động mọi lúc mọi nơi, không giới hạn khu vực hay phân khúc giá.</p></div></div>
+      <div class="perk-row"><span class="mark">§</span><div><h4>Không KPI, không điểm danh</h4><p>Không lên công ty bắt buộc, không họp hành liên miên.</p></div></div>
+      <div class="perk-row"><span class="mark">§</span><div><h4>Không ràng buộc một công ty</h4><p>Được làm việc đồng thời nhiều công ty, không bắt buộc nghỉ việc nơi khác.</p></div></div>
+      <div class="perk-row"><span class="mark">§</span><div><h4>Hỗ trợ marketing</h4><p>Hỗ trợ chạy quảng cáo Facebook, TikTok, Google; ưu đãi đến 50% khi đăng tin.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="positions">
+  <span class="kicker">Lộ trình phát triển</span>
+  <h2 class="section-title">Ba bước trên con đường sự nghiệp tại Sổ Đỏ</h2>
+  <p class="section-sub">Không yêu cầu kinh nghiệm để bắt đầu — cơ hội thăng tiến rõ ràng cho người có thành tích.</p>
+  <div class="ladder">
+    <div class="ladder-track">
+      <div class="ladder-step">
+        <div class="num mono">01</div>
+        <div class="ladder-card">
+          <span class="tag">Chuyên viên (Sale)</span>
+          <h3>Chuyên viên môi giới nhà phố</h3>
+          <p>Không yêu cầu kinh nghiệm, được đào tạo miễn phí từ A-Z và cầm tay chỉ việc từ vụ đầu tiên.</p>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="num mono">02</div>
+        <div class="ladder-card">
+          <span class="tag">Chuyên gia · Đầu chủ</span>
+          <h3>Ký nhà, làm việc với chủ nhà</h3>
+          <p>Ưu tiên ứng viên từng làm đầu chủ hoặc có kinh nghiệm, thành tích chốt nhà tại các đơn vị tương đồng.</p>
+        </div>
+      </div>
+      <div class="ladder-step">
+        <div class="num mono">03</div>
+        <div class="ladder-card">
+          <span class="tag">Quản lý</span>
+          <h3>Trưởng phòng kinh doanh</h3>
+          <p>Xây dựng, quản lý đội nhóm; cơ hội phát triển lên vị trí Giám đốc khi đạt thành tích tốt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <span class="kicker">Chia sẻ thật</span>
+  <h2 class="section-title">Nhân sự nói gì về Sổ Đỏ</h2>
+
+  <div class="t-featured">
+    <div class="seal seal-photo"><img src="images/the-vinh.png" alt="Trần Thế Vinh"></div>
+    <div>
+      <span class="t-featured-tag">Câu chuyện tiêu biểu</span>
+      <blockquote>"Từng mở doanh nghiệp riêng nhưng gặp khó khăn giai đoạn dịch, mình chuyển sang nghề môi giới và tìm được môi trường phù hợp để phát triển, hiện đang là Trưởng phòng Kinh doanh."</blockquote>
+      <div class="t-person">
+        <div><strong>Trần Thế Vinh</strong><span>TRƯỞNG PHÒNG KINH DOANH</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testi-grid">
+    <div class="t-card">
+      <p>"Từng là nhân viên tín dụng ngân hàng, qua tiếp xúc hồ sơ môi giới mà mình biết đến nghề này và quyết định học việc để trở thành Chuyên viên, được đội ngũ hỗ trợ nhiệt tình."</p>
+      <div class="t-person">
+        <div class="seal"><span>TH</span></div>
+        <div><strong>Nguyễn Thị Thu Hà</strong><span>CHUYÊN VIÊN</span></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Thích vai trò Đầu chủ vì hợp với việc đàm phán và làm việc trực tiếp với chủ nhà. Bắt đầu từ vị trí Chuyên viên, sau khi có thành tích được phát triển lên Chuyên gia."</p>
+      <div class="t-person">
+        <div class="seal"><span>MN</span></div>
+        <div><strong>Đào Minh Nhật</strong><span>ĐẦU CHỦ</span></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Mới ra trường chưa có kinh nghiệm gì về nhà đất, nhưng nhờ được cầm tay chỉ việc từ những ngày đầu nên chỉ sau 2 tháng mình đã chốt được giao dịch đầu tiên."</p>
+      <div class="t-person">
+        <div class="seal"><span>QB</span></div>
+        <div><strong>Trịnh Quốc Bảo</strong><span>CHUYÊN VIÊN</span></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Điều mình thích nhất là không bị ép doanh số theo tháng. Cứ làm chắc từng khách, uy tín tự nhiên tăng, thu nhập cũng tăng theo mà không thấy áp lực."</p>
+      <div class="t-person">
+        <div class="seal"><span>NA</span></div>
+        <div><strong>Phạm Thị Ngọc Anh</strong><span>CHUYÊN GIA</span></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Từng làm quản lý ở ngành khác, chuyển qua đây mình bất ngờ vì cơ chế xây đội nhóm rất rõ ràng, minh bạch hoa hồng cho từng thành viên trong nhóm."</p>
+      <div class="t-person">
+        <div class="seal"><span>HL</span></div>
+        <div><strong>Vũ Hoàng Long</strong><span>TRƯỞNG NHÓM KINH DOANH</span></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <p>"Làm mẹ bỉm sữa nên mình cần công việc chủ động thời gian. Không phải lên công ty mỗi ngày mà vẫn theo sát được khách, phù hợp với hoàn cảnh của mình."</p>
+      <div class="t-person">
+        <div class="seal"><span>KN</span></div>
+        <div><strong>Bùi Thị Kim Ngân</strong><span>ĐẦU CHỦ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="locations">
+  <div class="locations-wrap">
+    <span class="kicker">Địa điểm làm việc</span>
+    <h2 class="section-title">Anh em muốn làm việc ở đâu?</h2>
+    <div class="loc-grid">
+      <div class="loc-item"><b>Trung tâm</b>25A Nguyễn Thị Huỳnh, Phú Nhuận</div>
+      <div class="loc-item"><b>Tân Phú</b>219 Thạch Lam, Phú Thạnh</div>
+      <div class="loc-item"><b>Thủ Đức</b>660 Song Hành Xa Lộ Hà Nội</div>
+      <div class="loc-item"><b>Quận 12</b>43/9 Nguyễn Thị Đặng, Hiệp Thành</div>
+      <div class="loc-item"><b>Quận 7</b>195 Đường số 9A KDC Trung Sơn, Bình Hưng</div>
+      <div class="loc-item"><b>Bình Dương</b>1226 Cách Mạng Tháng Tám, Thủ Dầu Một</div>
+      <div class="loc-item"><b>Đồng Nai</b>148/9 Phan Trung, P. Tân Tiến, Biên Hòa</div>
+    </div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="apply-panel">
+    <div class="apply-copy">
+      <span class="kicker">Bước cuối cùng</span>
+      <h2>Đăng ký ứng tuyển ngay hôm nay</h2>
+      <p>Điền thông tin bên cạnh, đội ngũ tuyển dụng sẽ liên hệ lại trong thời gian sớm nhất.</p>
+      <div class="hotline-box"><span>HỖ TRỢ NHANH</span><b class="mono">0938 121 937</b></div>
+      <div class="quick-contact">
+        <a href="tel:0938121937" class="quick-btn call">📞 Gọi ngay 0938 121 937</a>
+        <a href="https://zalo.me/0792227522" target="_blank" rel="noopener" class="quick-btn zalo">💬 Nhắn Zalo</a>
+      </div>
+    </div>
+    <div class="form-wrap">
+      <label>Họ và tên</label>
+      <input type="text" placeholder="Nhập họ tên của bạn">
+      <label>Số điện thoại</label>
+      <input type="tel" placeholder="Nhập số điện thoại">
+      <label>Vị trí ứng tuyển</label>
+      <select>
+        <option>Chuyên viên (Sale)</option>
+        <option>Chuyên gia – Đầu chủ</option>
+        <option>Trưởng phòng kinh doanh</option>
+      </select>
+      <label>Khu vực mong muốn</label>
+      <select>
+        <option>Trung tâm</option>
+        <option>Tân Phú</option>
+        <option>Thủ Đức</option>
+        <option>Quận 12</option>
+        <option>Quận 7</option>
+        <option>Bình Dương</option>
+        <option>Đồng Nai</option>
+      </select>
+      <button type="button" onclick="alert('Cảm ơn bạn đã đăng ký! Đây là bản demo giao diện.')">GỬI ĐĂNG KÝ</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-wrap">
+    <div>
+      <h4>Công ty</h4>
+      <p style="opacity:.9;font-weight:700;">CÔNG TY TNHH MÔI GIỚI BẤT ĐỘNG SẢN SỔ ĐỎ</p>
+      <p>25A Nguyễn Thị Huỳnh, Phú Nhuận, Thành phố Hồ Chí Minh</p>
+      <p>Hotline: <a href="tel:0938121937">0938 121 937</a> (Mr. Thế Vinh)</p>
+      <p>Email: tranthevinhbdspro@gmail.com</p>
+    </div>
+    <div>
+      <h4>Cam kết</h4>
+      <ul>
+        <li>Thực hiện nghĩa vụ thuế đầy đủ</li>
+        <li>Đào tạo miễn phí</li>
+        <li>Hướng dẫn 1 kèm 1</li>
+        <li>Chính sách bảo mật thông tin</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Liên kết nhanh</h4>
+      <ul>
+        <li><a href="#advantages">Ưu điểm</a></li>
+        <li><a href="#positions">Lộ trình phát triển</a></li>
+        <li><a href="#locations">Địa điểm làm việc</a></li>
+        <li><a href="#apply">Đăng ký ứng tuyển</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    ĐOÀN KẾT · TỰ CƯỜNG · VƯƠN MÌNH · BỨC PHÁ — BẤT ĐỘNG SẢN SỔ ĐỎ
+  </div>
+</footer>
+
+</body>
+</html>
