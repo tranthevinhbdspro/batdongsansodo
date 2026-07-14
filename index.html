@@ -116,6 +116,17 @@
     color:var(--ink);opacity:.55;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:1px;padding:16px;
   }
   .placeholder-ph small{font-size:.62rem;opacity:.8;margin-top:6px;font-family:'Work Sans',sans-serif;letter-spacing:0;}
+
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;}
+  .gallery-item{
+    aspect-ratio:1/1;border-radius:4px;overflow:hidden;border:1.5px solid var(--ink);
+    position:relative;
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:.25s;}
+  .gallery-item:hover img{transform:scale(1.05);}
+  .gallery-item.placeholder-ph{aspect-ratio:1/1;border-radius:4px;border:1.5px dashed var(--line);}
+  .gallery-wide{grid-column:span 2;aspect-ratio:auto;}
+  @media(max-width:600px){.gallery-wide{grid-column:span 1;}}
   .c1{width:56%;top:8%;left:6%;transform:rotate(-4deg);z-index:2;}
   .c2{width:44%;bottom:6%;right:4%;transform:rotate(5deg);z-index:3;}
   .c3{width:34%;top:36%;left:38%;transform:rotate(-2deg);z-index:4;}
@@ -384,6 +395,19 @@
   </div>
 </section>
 
+<section id="privileges-gallery">
+  <span class="kicker">Không gian làm việc</span>
+  <h2 class="section-title">Đặc quyền tại Bất Động Sản Sổ Đỏ</h2>
+  <p class="section-sub">Một góc nhìn thực tế về môi trường và đội ngũ tại Sổ Đỏ.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="images/doi-ngu.jpg" alt="Đội ngũ Sổ Đỏ"></div>
+    <div class="gallery-item"><img src="images/dao-tao.jpg" alt="Đào tạo môi giới"></div>
+    <div class="gallery-item"><img src="images/hoat-dong.png" alt="Hoạt động công ty"></div>
+    <div class="gallery-item placeholder-ph">ẢNH 4<br><small>images/dac-quyen-4.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 5<br><small>images/dac-quyen-5.jpg</small></div>
+  </div>
+</section>
+
 <section id="positions">
   <span class="kicker">Lộ trình phát triển</span>
   <h2 class="section-title">Ba bước trên con đường sự nghiệp tại Sổ Đỏ</h2>
@@ -415,6 +439,28 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="training-gallery">
+  <span class="kicker">Đào tạo thực chiến</span>
+  <h2 class="section-title">Các khóa đào tạo tại Sổ Đỏ</h2>
+  <p class="section-sub">Từ nền tảng nghề môi giới đến kỹ năng đàm phán, chốt vụ thực tế.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item placeholder-ph">ẢNH 1<br><small>images/dao-tao-1.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 2<br><small>images/dao-tao-2.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 3<br><small>images/dao-tao-3.jpg</small></div>
+  </div>
+</section>
+
+<section id="activity-gallery">
+  <span class="kicker">Khoảnh khắc Sổ Đỏ</span>
+  <h2 class="section-title">Một số hình ảnh Bất Động Sản Sổ Đỏ</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item placeholder-ph">ẢNH 1<br><small>images/hinh-anh-1.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 2<br><small>images/hinh-anh-2.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 3<br><small>images/hinh-anh-3.jpg</small></div>
+    <div class="gallery-item placeholder-ph">ẢNH 4<br><small>images/hinh-anh-4.jpg</small></div>
   </div>
 </section>
 
@@ -501,7 +547,6 @@
       <span class="kicker">Bước cuối cùng</span>
       <h2>Đăng ký ứng tuyển ngay hôm nay</h2>
       <p>Điền thông tin bên cạnh, đội ngũ tuyển dụng sẽ liên hệ lại trong thời gian sớm nhất.</p>
-      <div class="hotline-box"><span>HỖ TRỢ NHANH</span><b class="mono">0938 121 937</b></div>
       <div class="quick-contact">
         <a href="tel:0938121937" class="quick-btn call">📞 Gọi ngay 0938 121 937</a>
         <a href="https://zalo.me/0792227522" target="_blank" rel="noopener" class="quick-btn zalo">💬 Nhắn Zalo</a>
