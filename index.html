@@ -165,15 +165,24 @@
   .adv-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:36px;align-items:stretch;}
   .adv-photo{border-radius:4px;overflow:hidden;border:1.5px solid var(--ink);}
   .adv-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-  .adv-layout .adv-grid{grid-template-columns:repeat(2,1fr);}
+  .adv-layout .adv-grid{grid-template-columns:repeat(2,1fr);gap:16px;border:none;}
   @media(max-width:800px){ .adv-layout{grid-template-columns:1fr;} .adv-photo{max-height:340px;} }
   .adv-card{
     background:var(--paper);padding:32px 26px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);
     position:relative;transition:.2s;
   }
   .adv-card:hover{background:var(--sand);}
+  .adv-layout .adv-card{
+    border:1px solid var(--line);border-radius:14px;padding:26px 22px;box-shadow:0 2px 8px rgba(30,36,29,.04);
+  }
+  .adv-layout .adv-card:hover{border-color:var(--clay);box-shadow:0 8px 20px rgba(30,36,29,.08);transform:translateY(-2px);}
   .adv-card .tab-no{
     font-family:'Space Mono',monospace;font-size:.72rem;color:var(--clay);letter-spacing:1px;margin-bottom:18px;display:block;
+  }
+  .adv-card .num-badge{
+    width:36px;height:36px;border-radius:50%;background:var(--sand);color:var(--clay);
+    display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;
+    margin-bottom:16px;
   }
   .adv-card h3{font-size:1.08rem;margin-bottom:10px;font-weight:700;}
   .adv-card p{color:var(--ink);opacity:.7;font-size:.92rem;}
@@ -366,22 +375,22 @@
     </div>
     <div class="adv-grid">
       <div class="adv-card">
-        <span class="tab-no">HỒ SƠ · 01</span>
+        <span class="num-badge">01</span>
         <h3>Nguồn nhà ~100.000 căn</h3>
         <p>Gần 100.000 căn nhà phố, căn hộ, đất thổ cư đã được xác thực trên hệ thống.</p>
       </div>
       <div class="adv-card">
-        <span class="tab-no">HỒ SƠ · 02</span>
+        <span class="num-badge">02</span>
         <h3>Hoa hồng môi giới 3%</h3>
         <p>Hoa hồng từ 3%, tối thiểu 100 triệu/vụ. Chuyên viên nhận đến 42%.</p>
       </div>
       <div class="adv-card">
-        <span class="tab-no">HỒ SƠ · 03</span>
+        <span class="num-badge">03</span>
         <h3>Một tài khoản, không giới hạn</h3>
         <p>Chỉ cần một tài khoản trên app, tự do truy cập nguồn nhà và bán ở mọi khu vực.</p>
       </div>
       <div class="adv-card">
-        <span class="tab-no">HỒ SƠ · 04</span>
+        <span class="num-badge">04</span>
         <h3>Cơ chế minh bạch</h3>
         <p>Cơ hội thăng tiến rõ ràng, công bằng, không phân biệt học vấn hay xuất thân.</p>
       </div>
