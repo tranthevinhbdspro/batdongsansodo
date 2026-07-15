@@ -325,6 +325,38 @@
     .ladder-step{margin-bottom:30px;}
     .apply-panel{grid-template-columns:1fr;}
     .footer-wrap{grid-template-columns:1fr;}
+  }  /* FLOATING: nút Zalo góc phải */
+  .zalo-float{
+    position:fixed;right:20px;bottom:20px;z-index:200;
+    width:58px;height:58px;border-radius:50%;background:#0068ff;
+    display:flex;align-items:center;justify-content:center;color:#fff;
+    box-shadow:0 6px 18px rgba(0,104,255,.4);text-decoration:none;
+    font-weight:800;font-size:1rem;font-family:'Work Sans',sans-serif;
+    animation:zaloPulse 2.2s infinite;transition:.2s;
+  }
+  .zalo-float:hover{transform:scale(1.08);}
+  @keyframes zaloPulse{
+    0%{box-shadow:0 6px 18px rgba(0,104,255,.4),0 0 0 0 rgba(0,104,255,.5);}
+    70%{box-shadow:0 6px 18px rgba(0,104,255,.4),0 0 0 14px rgba(0,104,255,0);}
+    100%{box-shadow:0 6px 18px rgba(0,104,255,.4),0 0 0 0 rgba(0,104,255,0);}
+  }
+
+  /* FLOATING: thông báo vừa đăng ký góc trái */
+  .signup-toast{
+    position:fixed;left:20px;bottom:20px;z-index:200;
+    background:var(--paper);border:1.5px solid var(--ink);border-radius:8px;
+    padding:14px 18px;display:flex;align-items:center;gap:12px;max-width:300px;
+    box-shadow:0 10px 24px rgba(0,0,0,.18);
+    transform:translateY(120%);opacity:0;transition:transform .4s ease,opacity .4s ease;
+  }
+  .signup-toast.show{transform:translateY(0);opacity:1;}
+  .signup-toast .st-dot{width:9px;height:9px;border-radius:50%;background:#2ea043;flex-shrink:0;box-shadow:0 0 0 3px rgba(46,160,67,.2);}
+  .signup-toast .st-text{font-size:.82rem;line-height:1.4;}
+  .signup-toast .st-text b{color:var(--clay);}
+  .signup-toast .st-time{display:block;font-size:.7rem;color:var(--ink);opacity:.55;margin-top:2px;font-family:'Space Mono',monospace;}
+  @media(max-width:600px){
+    .zalo-float{width:50px;height:50px;right:14px;bottom:14px;}
+    .signup-toast{left:14px;right:14px;max-width:none;bottom:78px;}
   }
 </style>
 </head>
@@ -658,6 +690,43 @@
     ĐOÀN KẾT · TỰ CƯỜNG · VƯƠN MÌNH · BỨC PHÁ — BẤT ĐỘNG SẢN SỔ ĐỎ
   </div>
 </footer>
+
+<a href="https://zalo.me/0792227522" target="_blank" rel="noopener" class="zalo-float" aria-label="Nhắn Zalo">Zalo</a>
+
+<div class="signup-toast" id="signup-toast">
+  <span class="st-dot"></span>
+  <div class="st-text">
+    <span id="st-msg"><b>Trần Quốc Bảo</b> vừa đăng ký ứng tuyển</span>
+    <span class="st-time" id="st-time">2 phút trước</span>
+  </div>
+</div>
+
+<script>
+  const signupData = [
+    ['Trần Quốc Bảo', '2 phút trước'],
+    ['Nguyễn Thị Mai', '6 phút trước'],
+    ['Lê Hoàng Nam', '11 phút trước'],
+    ['Phạm Thị Thu', '18 phút trước'],
+    ['Đỗ Văn Kiên', '24 phút trước'],
+    ['Vũ Thị Hồng', '31 phút trước']
+  ];
+  const toast = document.getElementById('signup-toast');
+  const stMsg = document.getElementById('st-msg');
+  const stTime = document.getElementById('st-time');
+  let signupIndex = 0;
+
+  function showSignupToast() {
+    const [name, time] = signupData[signupIndex % signupData.length];
+    stMsg.innerHTML = '<b>' + name + '</b> vừa đăng ký ứng tuyển';
+    stTime.textContent = time;
+    toast.classList.add('show');
+    signupIndex++;
+    setTimeout(() => { toast.classList.remove('show'); }, 5000);
+  }
+
+  setTimeout(showSignupToast, 3000);
+  setInterval(showSignupToast, 13000);
+</script>
 
 </body>
 </html>
