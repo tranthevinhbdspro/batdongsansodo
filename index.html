@@ -571,30 +571,57 @@
       </div>
     </div>
     <div class="form-wrap">
-      <label>Họ và tên</label>
-      <input type="text" placeholder="Nhập họ tên của bạn">
-      <label>Số điện thoại</label>
-      <input type="tel" placeholder="Nhập số điện thoại">
-      <label>Vị trí ứng tuyển</label>
-      <select>
-        <option>Chuyên viên (Sale)</option>
-        <option>Chuyên gia – Đầu chủ</option>
-        <option>Trưởng phòng kinh doanh</option>
-      </select>
-      <label>Khu vực mong muốn</label>
-      <select>
-        <option>Trung tâm</option>
-        <option>Tân Phú</option>
-        <option>Thủ Đức</option>
-        <option>Quận 12</option>
-        <option>Quận 7</option>
-        <option>Bình Dương</option>
-        <option>Đồng Nai</option>
-      </select>
-      <button type="button" onclick="alert('Cảm ơn bạn đã đăng ký! Đây là bản demo giao diện.')">GỬI ĐĂNG KÝ</button>
+      <form id="apply-form" action="https://formspree.io/f/mjgnkjnr" method="POST">
+        <label>Họ và tên</label>
+        <input type="text" name="ho_ten" placeholder="Nhập họ tên của bạn" required>
+        <label>Số điện thoại</label>
+        <input type="tel" name="so_dien_thoai" placeholder="Nhập số điện thoại" required>
+        <label>Vị trí ứng tuyển</label>
+        <select name="vi_tri">
+          <option>Chuyên viên (Sale)</option>
+          <option>Chuyên gia – Đầu chủ</option>
+          <option>Trưởng phòng kinh doanh</option>
+        </select>
+        <label>Khu vực mong muốn</label>
+        <input type="text" name="khu_vuc" placeholder="VD: Trung tâm, Quận 7, Bình Dương...">
+        <button type="submit" id="apply-submit-btn">GỬI ĐĂNG KÝ</button>
+        <p id="apply-form-status" style="margin-top:14px;font-size:.88rem;text-align:center;display:none;"></p>
+      </form>
     </div>
   </div>
 </section>
+
+<script>
+  const applyForm = document.getElementById('apply-form');
+  const applyStatus = document.getElementById('apply-form-status');
+  const applyBtn = document.getElementById('apply-submit-btn');
+  applyForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    applyBtn.disabled = true;
+    applyBtn.textContent = 'ĐANG GỬI...';
+    try {
+      const res = await fetch(applyForm.action, {
+        method: 'POST',
+        body: new FormData(applyForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        applyForm.reset();
+        applyStatus.style.display = 'block';
+        applyStatus.style.color = 'var(--clay)';
+        applyStatus.textContent = '✅ Đã gửi đăng ký thành công! Đội ngũ tuyển dụng sẽ liên hệ lại sớm.';
+      } else {
+        throw new Error('Gửi thất bại');
+      }
+    } catch (err) {
+      applyStatus.style.display = 'block';
+      applyStatus.style.color = '#a33';
+      applyStatus.textContent = '❌ Có lỗi xảy ra, vui lòng gọi hotline 0938 121 937 để được hỗ trợ.';
+    }
+    applyBtn.disabled = false;
+    applyBtn.textContent = 'GỬI ĐĂNG KÝ';
+  });
+</script>
 
 <footer>
   <div class="footer-wrap">
